@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<section>
+  <header class="major">
+    <h2>Algo para leer</h2>
+  </header>
+  <div class="posts">
+    {% for post in paginator.posts %}
+      <article>
+        <h3>{{ post.title }}</h3>
+        <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+        <ul class="actions">
+          <li><a href="{{ post.url | prepend: site.baseurl }}" class="button">Seguir leyendo</a></li>
+        </ul>
+      </article>
+    {% endfor %}
+
+  </div>
+</section>
+
+{% if paginator.total_pages > 1 %}
+<ul class="pagination">
+  {% if paginator.previous_page %}
+    <li><span class="button"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Anterior</a></span></li>
+  {% else %}
+    <li><span class="button disabled">Anterior</span></li>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <li><a class="page active">{{page}}</a></li>
+    {% elsif page == 1 %}
+      <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page">{{page}}</a></li>
+    {% else %}
+      <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="page">{{page}}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <li><span class="button"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Siguiente</a></span></li>
+  {% else %}
+    <li><span class="button disabled">Siguiente</span></li>
+  {% endif %}
+</ul>
+{% endif %}

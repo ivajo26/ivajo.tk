@@ -16,3 +16,9 @@ github_username:  ivajo26
 
 # Build settings
 markdown: kramdown
+
+paginate: 6
+
+paginate_path: "/blog/:num/"
+
+gems: [jekyll-paginate]
