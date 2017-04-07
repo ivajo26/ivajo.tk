@@ -29,7 +29,7 @@ layout: default
         <article>
           <h3>{{ post.title }}</h3>
           <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-          <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <p>{{ post.abstract }}</p>
           <ul class="actions">
             <li><a href="{{ post.url | prepend: site.baseurl }}" class="button">Seguir leyendo</a></li>
           </ul>
